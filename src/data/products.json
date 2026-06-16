@@ -1,0 +1,68 @@
+[
+  {
+    "id": "1",
+    "name": "UV Protection Sunglasses",
+    "brand": "SunShade",
+    "price": 49.99,
+    "rating": 4.8,
+    "stock": 25,
+    "description": "High-end polarized sunglasses offering full UV400 shield defense against harsh solar rays.",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80",
+    "category": "Accessories"
+  },
+  {
+    "id": "2",
+    "name": "Summer Beach Hat",
+    "brand": "BeachLife",
+    "price": 29.99,
+    "rating": 4.5,
+    "stock": 40,
+    "description": "Breathable woven straw construction featuring a wide protective brim perfect for endless shores.",
+    "image": "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
+  },
+  {
+    "id": "3",
+    "name": "Aloe Vera Skin Gel",
+    "brand": "AquaGlow",
+    "price": 15.49,
+    "rating": 4.9,
+    "stock": 100,
+    "description": "Pure soothing organic cooling gel engineered for instant recovery after hot sunny days out.",
+    "image": "https://images.unsplash.com/photo-1608248597481-496100c80836?auto=format&fit=crop&w=600&q=80",
+    "category": "Skincare"
+  },
+  {
+    "id": "4",
+    "name": "Beach Sandals",
+    "brand": "BeachLife",
+    "price": 34.99,
+    "rating": 4.2,
+    "stock": 15,
+    "description": "Waterproof, ergonomic non-slip footbed design built to comfortably map along hot sands.",
+    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
+  },
+  {
+    "id": "5",
+    "name": "Summer Cotton Shirt",
+    "brand": "SummerFit",
+    "price": 45.00,
+    "rating": 4.6,
+    "stock": 32,
+    "description": "Ultra-light breathable linen blend crafted to maintain elite core cooling profiles anywhere.",
+    "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
+  },
+  {
+    "id": "6",
+    "name": "Travel Water Bottle",
+    "brand": "SummerFit",
+    "price": 24.99,
+    "rating": 4.7,
+    "stock": 60,
+    "description": "Double-wall vacuum insulation setup keeping your refreshing liquids ice cold up to 24 hours.",
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+    "category": "Accessories"
+  }
+]
