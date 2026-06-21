@@ -1,46 +1,91 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
+import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleRegister = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Account created! Navigating to login...");
-    router.push("/login");
+    setLoading(true);
+
+    // 📝 Better-Auth এর মাধ্যমে আসল সাইন-আপ ও অটো-লগইন
+    const { data, error } = await authClient.signUp.email({
+      email,
+      password,
+      name,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      toast.error(error.message || "Registration failed!");
+    } else {
+      toast.success("Account created! Redirecting to products...");
+      router.push("/products"); // সরাসরি প্রাইভেট প্রোডাক্ট পেজে নিয়ে যাবে
+      router.refresh();
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/products"
+    });
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[75vh] px-4">
+    <div className="min-h-[85vh] flex items-center justify-center bg-slate-50 px-4 py-12">
       <div className="card w-full max-w-md bg-white shadow-xl rounded-3xl border border-slate-100 p-8 space-y-6">
-        <h2 className="text-2xl font-black text-center tracking-tight">Create Your Account</h2>
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Name</label>
-            <input type="text" required className="input input-bordered rounded-xl" />
+        
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-black tracking-tight text-neutral">Create Account</h1>
+          <p className="text-sm text-slate-400 font-medium">Join SunCart to see private items & profile</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="form-control w-full">
+            <label className="label"><span className="label-text font-semibold text-neutral">Full Name</span></label>
+            <input type="text" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} className="input input-bordered w-full rounded-xl bg-slate-50 text-neutral border-slate-200" required />
           </div>
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Email</label>
-            <input type="email" required className="input input-bordered rounded-xl" />
+
+          <div className="form-control w-full">
+            <label className="label"><span className="label-text font-semibold text-neutral">Email Address</span></label>
+            <input type="email" placeholder="example@suncart.com" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full rounded-xl bg-slate-50 text-neutral border-slate-200" required />
           </div>
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Photo URL</label>
-            <input type="url" className="input input-bordered rounded-xl" />
+
+          <div className="form-control w-full">
+            <label className="label"><span className="label-text font-semibold text-neutral">Password</span></label>
+            <input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full rounded-xl bg-slate-50 text-neutral border-slate-200" required />
           </div>
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Password</label>
-            <input type="password" required className="input input-bordered rounded-xl" />
+
+          <div className="pt-2">
+            <button type="submit" disabled={loading} className="btn btn-primary w-full text-white bg-[#ff6b6b] border-none hover:bg-[#ff5252] rounded-xl font-bold shadow-md">
+              {loading ? "Creating Account..." : "Create Account"}
+            </button>
           </div>
-          <button type="submit" className="btn btn-primary w-full text-white rounded-xl mt-2 shadow-md">Register</button>
         </form>
-        <div className="divider text-xs text-slate-400">OR</div>
-        <button className="btn btn-outline w-full rounded-xl gap-2 hover:bg-neutral">
-          <FaGoogle />
-          <span>Continue with Google</span>
+
+        <div className="divider text-xs text-slate-300 font-bold uppercase tracking-wider">Or continue with</div>
+
+        <button onClick={handleGoogleSignIn} type="button" className="btn btn-outline w-full rounded-xl border-slate-200 hover:bg-slate-50 text-neutral font-bold flex items-center justify-center gap-3 bg-white">
+          <FcGoogle className="text-xl" />
+          <span>Sign up with Google</span>
         </button>
+
+        <div className="text-center text-sm text-slate-400 font-medium pt-2">
+          Already have an account? <Link href="/login" className="text-primary font-bold hover:underline">Login here</Link>
+        </div>
+
       </div>
     </div>
   );

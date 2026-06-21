@@ -1,41 +1,93 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client"; // আপনার auth-client পাথ ঠিক রাখুন
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("Welcome back to SunCart!");
-    router.push(callbackUrl);
-    router.refresh();
+    setLoading(true);
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+    });
+    setLoading(false);
+
+    if (error) {
+      toast.error(error.message || "Email or Password incorrect!");
+    } else {
+      toast.success("Welcome back! Loading private collection...");
+      router.push("/my-profile"); 
+      router.refresh();
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/my-profile"
+    });
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[70vh] px-4">
+    <div className="min-h-[85vh] flex items-center justify-center bg-slate-50 px-4 py-12">
       <div className="card w-full max-w-md bg-white shadow-xl rounded-3xl border border-slate-100 p-8 space-y-6">
-        <h2 className="text-2xl font-black text-center tracking-tight">Login to SunCart</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Email Address</label>
-            <input type="email" required className="input input-bordered rounded-xl" />
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-black tracking-tight text-neutral">Welcome Back</h1>
+          <p className="text-sm text-slate-400 font-medium">Log in to unlock private products & profile</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold text-neutral">Email Address</span>
+            </label>
+            <input 
+              type="email" 
+              placeholder="example@suncart.com" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input input-bordered w-full rounded-xl bg-slate-50 text-neutral border-slate-200" 
+              required 
+            />
           </div>
-          <div className="form-control">
-            <label className="label font-semibold text-xs text-slate-500">Password</label>
-            <input type="password" required className="input input-bordered rounded-xl" />
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold text-neutral">Password</span>
+            </label>
+            <input 
+              type="password" 
+              placeholder="••••••••" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input input-bordered w-full rounded-xl bg-slate-50 text-neutral border-slate-200" 
+              required 
+            />
           </div>
-          <button type="submit" className="btn btn-primary w-full text-white rounded-xl mt-2 shadow-md">Sign In</button>
+
+          <div className="pt-2">
+            <button type="submit" disabled={loading} className="btn btn-primary w-full text-white bg-[#ff6b6b] border-none hover:bg-[#ff5252] rounded-xl font-bold shadow-md">
+              {loading ? "Signing In..." : "Sign In"}
+            </button>
+          </div>
         </form>
-        <div className="divider text-xs text-slate-400">OR</div>
-        <button className="btn btn-outline w-full rounded-xl gap-2 hover:bg-neutral">
-          <FaGoogle />
-          <span>Login with Google</span>
+        <div className="divider text-xs text-slate-300 font-bold uppercase tracking-wider">Or continue with</div>
+        <button onClick={handleGoogleSignIn} type="button" className="btn btn-outline w-full rounded-xl border-slate-200 hover:bg-slate-50 text-neutral font-bold flex items-center justify-center gap-3 bg-white">
+          <FcGoogle className="text-xl" />
+          <span>Sign in with Google</span>
         </button>
+        <div className="text-center text-sm text-slate-400 font-medium pt-2">
+          Don't have an account? <Link href="/register" className="text-primary font-bold hover:underline">Register here</Link>
+        </div>
       </div>
     </div>
   );

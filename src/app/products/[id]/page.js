@@ -1,8 +1,23 @@
 import { getProductById } from "@/actions/productActions";
+import { auth } from "@/lib/auth"; 
 import { notFound } from "next/navigation";
 
 export default async function ProductDetailsPage({ params }) {
   const resolvedParams = await params;
+
+  let session = null;
+  try {
+    session = await auth.api.getSession({
+      headers: new Headers(),
+    });
+  } catch (error) {
+    session = null;
+  }
+
+  if (!session || !session.user) {
+    notFound();
+  }
+
   const product = await getProductById(resolvedParams.id);
 
   if (!product) {
@@ -24,7 +39,7 @@ export default async function ProductDetailsPage({ params }) {
               </div>
               <span className="text-sm font-bold bg-amber-100 text-amber-700 px-3 py-1 rounded-full">★ {product.rating}</span>
             </div>
-            <p className="text-2xl font-black text-primary">${product.price.toFixed(2)}</p>
+            <p className="text-2xl font-black text-primary">${Number(product.price).toFixed(2)}</p>
             <div className="divider"></div>
             <p className="text-slate-500 leading-relaxed text-sm md:text-base">{product.description}</p>
           </div>
