@@ -23,17 +23,6 @@
   },
   {
     "id": "3",
-    "name": "Aloe Vera Skin Gel",
-    "brand": "AquaGlow",
-    "price": 15.49,
-    "rating": 4.9,
-    "stock": 100,
-    "description": "Pure soothing organic cooling gel engineered for instant recovery after hot sunny days out.",
-    "image": "https://images.unsplash.com/photo-1608248597481-496100c80836?auto=format&fit=crop&w=600&q=80",
-    "category": "Skincare"
-  },
-  {
-    "id": "4",
     "name": "Beach Sandals",
     "brand": "BeachLife",
     "price": 34.99,
@@ -44,7 +33,7 @@
     "category": "Apparel"
   },
   {
-    "id": "5",
+    "id": "4",
     "name": "Summer Cotton Shirt",
     "brand": "SummerFit",
     "price": 45.00,
@@ -55,7 +44,7 @@
     "category": "Apparel"
   },
   {
-    "id": "6",
+    "id": "5",
     "name": "Travel Water Bottle",
     "brand": "SummerFit",
     "price": 24.99,
@@ -64,5 +53,94 @@
     "description": "Double-wall vacuum insulation setup keeping your refreshing liquids ice cold up to 24 hours.",
     "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
     "category": "Accessories"
+  },
+  {
+    "id": "6",
+    "name": "Wireless Noise-Canceling Headphones",
+    "brand": "SonicWave",
+    "price": 129.99,
+    "rating": 4.7,
+    "stock": 45,
+    "description": "Experience pure sound with hybrid active noise cancellation and up to 40 hours of playtime.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+    "category": "Electronics"
+  },
+  {
+    "id": "7",
+    "name": "Minimalist Leather Wallet",
+    "brand": "CraftHide",
+    "price": 39.50,
+    "rating": 4.6,
+    "stock": 80,
+    "description": "Slim, RFID-blocking genuine leather wallet designed to hold up to 8 cards and cash seamlessly.",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80",
+    "category": "Accessories"
+  },
+
+  {
+    "id": "8",
+    "name": "Matte Black Coffee Mug",
+    "brand": "BrewNest",
+    "price": 18.00,
+    "rating": 4.4,
+    "stock": 110,
+    "description": "Ceramic desk mug with an ergonomic handle and a splash-proof lid to keep your coffee hot.",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    "category": "Home & Kitchen"
+  },
+  {
+    "id": "9",
+    "name": "Smart Fitness Watch",
+    "brand": "AuraFit",
+    "price": 149.99,
+    "rating": 4.5,
+    "stock": 35,
+    "description": "Track your heart rate, sleep cycles, and daily steps with a vibrant AMOLED display.",
+    "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=600&q=80",
+    "category": "Electronics"
+  },
+  {
+    "id": "10",
+    "name": "Organic Scented Candle",
+    "brand": "Lumina",
+    "price": 22.49,
+    "rating": 4.9,
+    "stock": 65,
+    "description": "Hand-poured soy wax candle infused with lavender and eucalyptus essential oils.",
+    "image": "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80",
+    "category": "Home & Kitchen"
+  },
+  {
+    "id": "11",
+    "name": "Classic White Sneakers",
+    "brand": "UrbanStride",
+    "price": 59.99,
+    "rating": 4.3,
+    "stock": 50,
+    "description": "Durable and lightweight minimalist sneakers designed for premium everyday comfort.",
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
+  },
+  {
+    "id": "12",
+    "name": "Professional Backpack",
+    "brand": "PackPro",
+    "price": 75.00,
+    "rating": 4.7,
+    "stock": 28,
+    "description": "Water-resistant commuter backpack featuring a dedicated 15.6-inch padded laptop sleeve.",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
+    "category": "Accessories"
+  },
+  {
+    "id": "13",
+    "name": "Vitamin C Face Serum",
+    "brand": "AquaGlow",
+    "price": 28.50,
+    "rating": 4.6,
+    "stock": 90,
+    "description": "Brightening serum with hyaluronic acid to reduce dark spots and enhance skin glow.",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
+    "category": "Skincare"
   }
 ]
