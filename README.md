@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ☀️ SunCart – Summer Essentials Store
 
-## Getting Started
+A modern and responsive summer eCommerce platform built with **Next.js 15 (App Router)** and **Tailwind CSS**. Users can easily browse seasonal products, view deep product analytics/details, manage their profile data, and secure their credentials via robust multi-method authentication.
 
-First, run the development server:
+## 🚀 Live Deployment
+🔗 **Live URL:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Key Features
+### 1. Unified Layout Structure
+* **Dynamic Navbar:** Adapts smoothly based on authentication state. 
+  * *Logged In:* Displays customized user avatar with a persistent **Logout** trigger.
+  * *Logged Out:* Shows intuitive **Login** / **Register** action thresholds.
+* **Semantic Footer:** Structured data featuring rich contact grids, absolute social redirects (Facebook, Instagram, GitHub, LinkedIn), and privacy frameworks.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. Static Content Delivery (JSON Hydration)
+* Built-in file-system integration using Node `fs` and `path` to hydrate product schemas safely without breaking on dynamic rendering environments.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Responsive Architectural Hubs
+* **Immersive Hero Section:** Dedicated interactive banners highlighting current summer promotions (e.g., *"Summer Sale 50% OFF"*).
+* **Curated Content Grids:** Showcases high-demand seasonal items mapping explicit details like dynamic pricing structures, customer satisfaction ratings, and rapid routing links.
+* **Value-Added Content Zones:** Custom blocks for *Summer Care Tips* and *Top Brands* to enhance user session value.
 
-## Learn More
+### 4. Enterprise-Grade Guarded Routing 🔒
+* Strict Server-Side Validation using state headers to secure the dynamic Product Details Page (`/products/[id]`). 
+* Unauthorized access triggers an instantaneous redirect schema keeping the structural integrity safe.
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Multi-Channel Security Configuration
+* Custom integration via **Better-Auth** supporting isolated Email/Password pipelines alongside Google Social Federated single-sign-on (SSO).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 6. Dynamic Profiling (Bonus Implementation) 🧩
+* Live access to user metadata (Name, Email, Profile Picture).
+* Seamless inline profile updating interface modifying client identity state efficiently.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📦 Core NPM Packages Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Package Name | Purpose |
+| :--- | :--- |
+| **next** | Core Next.js Framework (App Router Engine) |
+| **react / react-dom** | Declarative Component Rendering Layers |
+| **better-auth** | Multi-adapter authentication server and route managers |
+| **mongodb** | Native official driver managing underlying cloud connections |
+| **tailwindcss** | Utility-first cascading framework optimizing layout aesthetics |
+| **daisyui** | Semantic UI element layers providing cohesive modern styling |
+| **react-icons** | Universal vector iconography integration (Fa, Fc sets) |
+| **animate.css** | Hardware-accelerated presentation animations |
+| **react-hot-toast** | Asynchronous status event notices |
