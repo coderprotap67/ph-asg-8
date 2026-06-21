@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaSun } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaSun, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -10,17 +10,58 @@ export default function Footer() {
         </div>
         <p className="text-slate-400 max-w-xs">Premium engineered summer essentials designed to deliver superior shielding and modern breathable styling profiles.</p>
       </aside> 
+      
       <nav>
         <h6 className="footer-title text-white tracking-widest">Contact</h6> 
         <p className="text-slate-400">Email: chakmaprotap855@gmail.com</p>
-        <p className="text-slate-400">Hotline: +8801533098947</p>
+        <p className="text-slate-400">Phone: +8801533098947</p>
       </nav> 
+      
       <nav>
         <h6 className="footer-title text-white tracking-widest">Social & Legal</h6> 
         <div className="grid grid-flow-col gap-4 text-xl">
-          <a className="hover:text-primary transition-colors cursor-pointer"><FaFacebook /></a>
-          <a className="hover:text-primary transition-colors cursor-pointer"><FaInstagram /></a>
-          <a className="hover:text-primary transition-colors cursor-pointer"><FaTwitter /></a>
+          <a 
+            href="https://www.facebook.com/protap.chakma.54"
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            <FaFacebook />
+          </a>
+          <a 
+            href="https://www.instagram.com/protap_chakma" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            <FaInstagram />
+          </a>
+
+          <a 
+            href="https://twitter.com/protap_chakma" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            <FaTwitter />
+          </a>
+
+          <a 
+            href="https://github.com/coderprotap67"
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            <FaGithub />
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/protap-chakma-53185630a/"
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            <FaLinkedin />
+          </a>
         </div>
         <p className="text-xs text-slate-500 mt-4">Privacy Policy | © 2026 protap chakma. All rights reserved.</p>
       </nav>
