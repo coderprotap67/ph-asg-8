@@ -17,8 +17,6 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    // 📝 Better-Auth এর মাধ্যমে আসল সাইন-আপ ও অটো-লগইন
     const { data, error } = await authClient.signUp.email({
       email,
       password,
@@ -31,27 +29,23 @@ export default function RegisterPage() {
       toast.error(error.message || "Registration failed!");
     } else {
       toast.success("Account created! Redirecting to products...");
-      router.push("/products"); // সরাসরি প্রাইভেট প্রোডাক্ট পেজে নিয়ে যাবে
+      router.push("/products");
       router.refresh();
     }
   };
-
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
       callbackURL: "/products"
     });
   };
-
   return (
     <div className="min-h-[85vh] flex items-center justify-center bg-slate-50 px-4 py-12">
       <div className="card w-full max-w-md bg-white shadow-xl rounded-3xl border border-slate-100 p-8 space-y-6">
-        
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-black tracking-tight text-neutral">Create Account</h1>
           <p className="text-sm text-slate-400 font-medium">Join SunCart to see private items & profile</p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="form-control w-full">
             <label className="label"><span className="label-text font-semibold text-neutral">Full Name</span></label>

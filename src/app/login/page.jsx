@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { authClient } from "@/lib/auth-client"; // আপনার auth-client পাথ ঠিক রাখুন
+import { authClient } from "@/lib/auth-client"; 
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
@@ -76,7 +76,7 @@ export default function LoginPage() {
 
           <div className="pt-2">
             <button type="submit" disabled={loading} className="btn btn-primary w-full text-white bg-[#ff6b6b] border-none hover:bg-[#ff5252] rounded-xl font-bold shadow-md">
-              {loading ? "Signing In..." : "Sign In"}
+              {loading ? "Signing In..." : "Login"}
             </button>
           </div>
         </form>

@@ -15,10 +15,8 @@ export default function Navbar() {
   };
 
   return (
-    // আমরা মেইন কন্টেইনারে flex, justify-between এবং items-center ব্যবহার করে ৩টি অংশকে ৩ জায়গায় সাজালাম
     <div className="flex items-center justify-between bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-white/20 shadow-sm px-4 md:px-8 h-16">
       
-      {/* ১. বাম পাশের অংশ: লোগো (Left Side) */}
       <div className="flex-1 flex justify-start">
         <Link href="/" className="btn btn-ghost text-xl font-bold tracking-wide flex items-center gap-2 text-primary p-0 hover:bg-transparent">
           <FaSun className="animate-spin-slow" />
@@ -61,3 +59,9 @@ export default function Navbar() {
     </div>
   );
 }
+
+
+
+
+
+<h2 className="flex items-center gap-2 text-yellow-200 not-first-of-type: not-odd:not-last:"> welcome to Summer Essentials strore </h2>
