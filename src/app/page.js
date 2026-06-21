@@ -19,8 +19,6 @@ export default async function HomePage() {
   return (
     <div className="container mx-auto px-4 py-8 space-y-20 max-w-7xl">
       <HeroSlider />
-
-      {/* Popular Products */}
       <section className="space-y-6">
         <div className="text-center md:text-left">
           <h2 className="text-3xl font-extrabold tracking-tight">Popular Products</h2>
@@ -32,8 +30,6 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* Summer Care Tips */}
       <section className="space-y-6 bg-gradient-to-br from-amber-50 to-orange-50/60 rounded-3xl p-8 md:p-12 border border-orange-100/50">
         <h2 className="text-3xl font-extrabold text-center tracking-tight">Summer Care Tips</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
@@ -45,8 +41,6 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* Top Brands */}
       <section className="space-y-6 text-center pb-8">
         <h2 className="text-2xl font-extrabold tracking-tight text-slate-400 uppercase">Top Brands</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
