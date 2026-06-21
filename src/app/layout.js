@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import ToastProvider from "@/components/ToastProvider";
 
 export const metadata = {
-  title: "Summer Essentials",
+  title: " SunCart – Summer Essentials Store",
   description: "Premium Summer E-Commerce Store",
 };
 
