@@ -19,5 +19,9 @@ export const auth = betterAuth({
       enabled: true,
     },
     useSecureCookies: true,
-  }
+  },
+  trustedOrigins: [
+    "https://ph-asg-8.vercel.app",
+    "http://localhost:3000"
+  ]
 });
