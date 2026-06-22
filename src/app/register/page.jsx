@@ -28,15 +28,14 @@ export default function RegisterPage() {
     if (error) {
       toast.error(error.message || "Registration failed!");
     } else {
-      toast.success("Account created! Redirecting to products...");
-      router.push("/products");
-      router.refresh();
+      toast.success("Account created! Please log in.");
+      router.push("/login");
     }
   };
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/products"
+      callbackURL: "/login"
     });
   };
   return (
