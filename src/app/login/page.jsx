@@ -26,7 +26,7 @@ export default function LoginPage() {
       toast.error(error.message || "Email or Password incorrect!");
     } else {
       toast.success("Welcome back! Loading private collection...");
-      router.push("/my-profile"); 
+      router.push("/"); 
       router.refresh();
     }
   };
@@ -34,7 +34,7 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/my-profile"
+      callbackURL: "/",
     });
   };
 
