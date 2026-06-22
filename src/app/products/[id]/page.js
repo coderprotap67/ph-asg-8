@@ -61,3 +61,5 @@ export default async function ProductDetailsPage({ params }) {
     </div>
   );
 }
+
+export const dynamic = "force-dynamic";
