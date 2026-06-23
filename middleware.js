@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
 export async function middleware(request) {
-  const sessionToken = request.cookies.get("better-auth.session_token")?.value;
+  const sessionToken = 
+    request.cookies.get("better-auth.session_token")?.value || 
+    request.cookies.get("__secure-better-auth.session_token")?.value;
+
   const { pathname } = request.nextUrl;
 
   const isProtectedRoute = 
@@ -16,7 +19,6 @@ export async function middleware(request) {
 
   return NextResponse.next();
 }
-
 export const config = {
   matcher: ["/products/:id*", "/my-profile/:path*"],
 };

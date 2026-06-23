@@ -7,11 +7,9 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function MyProfilePage() {
-  // ⚡ Better-Auth এর ক্লায়েন্ট হুক যা লাইভ ব্রাউজার কুকি থেকে সেশন টানে
   const { data: session, isPending } = authClient.useSession();
   const router = useRouter();
 
-  // 🔒 প্রোটেক্টেড রুট: সেশন চেকিং শেষে ইউজার না থাকলে লগইনে পাঠাবে
   useEffect(() => {
     if (!isPending && !session) {
       toast.error("Please login to view your profile!");
@@ -19,7 +17,6 @@ export default function MyProfilePage() {
     }
   }, [session, isPending, router]);
 
-  // 🔄 ডেটা লোড হওয়ার সময় সুন্দর একটি স্পিনার দেখাবে
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-[70vh]">
@@ -28,7 +25,6 @@ export default function MyProfilePage() {
     );
   }
 
-  // ✅ ইউজার লগইন থাকলে তার প্রোফাইল ডিটেইলস দেখাবে
   if (session?.user) {
     const user = session.user;
 
@@ -57,7 +53,6 @@ export default function MyProfilePage() {
           </button>
         </div>
 
-        {/* 👤 ইউজারের লাইভ ডাটা */}
         <div className="flex flex-col items-center mb-6">
           {user.image ? (
             <img 
@@ -74,7 +69,6 @@ export default function MyProfilePage() {
           <p className="text-sm text-gray-400">{user.email}</p>
         </div>
 
-        {/* 🛠️ আপডেট প্রোফাইল বাটন */}
         <div className="w-full pt-4 border-t border-slate-100">
           <Link 
             href="/my-profile/update" 
@@ -86,6 +80,5 @@ export default function MyProfilePage() {
       </div>
     );
   }
-
   return null;
 }
