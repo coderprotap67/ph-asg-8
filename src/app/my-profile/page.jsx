@@ -7,11 +7,9 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function MyProfilePage() {
-  // ⚡ Better-Auth এর লাইভ ক্লায়েন্ট সেশন হুক
   const { data: session, isPending } = authClient.useSession();
   const router = useRouter();
 
-  // 🔒 প্রোটেক্টেড লজিক: সেশন চেকিং শেষ হওয়ার পর ইউজার না থাকলে লগইনে পাঠাবে
   useEffect(() => {
     if (!isPending && !session) {
       toast.error("Please login to view your profile!");
@@ -19,7 +17,6 @@ export default function MyProfilePage() {
     }
   }, [session, isPending, router]);
 
-  // 🔄 লোডিং স্পিনার
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-[70vh]">
@@ -28,7 +25,6 @@ export default function MyProfilePage() {
     );
   }
 
-  // ✅ ইউজার থাকলে তার ডিটেইলস দেখাবে
   if (session?.user) {
     const user = session.user;
 
@@ -59,11 +55,7 @@ export default function MyProfilePage() {
 
         <div className="flex flex-col items-center mb-6">
           {user.image ? (
-            <img 
-              src={user.image} 
-              alt="Profile" 
-              className="w-24 h-24 rounded-full object-cover border-2 border-[#ff6b6b] mb-2 shadow-sm" 
-            />
+            <img src={user.image} alt="Profile" className="w-24 h-24 rounded-full object-cover border-2 border-[#ff6b6b] mb-2 shadow-sm" />
           ) : (
             <div className="w-24 h-24 rounded-full bg-[#ff6b6b] text-white flex items-center justify-center text-3xl font-bold mb-2 shadow-sm">
               {user.name?.charAt(0).toUpperCase()}
@@ -74,16 +66,12 @@ export default function MyProfilePage() {
         </div>
 
         <div className="w-full pt-4 border-t border-slate-100">
-          <Link 
-            href="/my-profile/update" 
-            className="btn btn-primary w-full bg-[#ff6b6b] border-none text-white font-bold rounded-xl shadow-md hover:bg-[#ff5252] text-center block leading-[3rem]"
-          >
+          <Link href="/my-profile/update" className="btn btn-primary w-full bg-[#ff6b6b] border-none text-white font-bold rounded-xl shadow-md hover:bg-[#ff5252] text-center block leading-[3rem]">
             Update Information
           </Link>
         </div>
       </div>
     );
   }
-
   return null;
 }
