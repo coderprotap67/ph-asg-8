@@ -1,4 +1,5 @@
 "use client";
+
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -6,9 +7,11 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 
 export default function MyProfilePage() {
+  // ⚡ Better-Auth এর লাইভ ক্লায়েন্ট সেশন হুক
   const { data: session, isPending } = authClient.useSession();
   const router = useRouter();
 
+  // 🔒 প্রোটেক্টেড লজিক: সেশন চেকিং শেষ হওয়ার পর ইউজার না থাকলে লগইনে পাঠাবে
   useEffect(() => {
     if (!isPending && !session) {
       toast.error("Please login to view your profile!");
@@ -16,6 +19,7 @@ export default function MyProfilePage() {
     }
   }, [session, isPending, router]);
 
+  // 🔄 লোডিং স্পিনার
   if (isPending) {
     return (
       <div className="flex justify-center items-center h-[70vh]">
@@ -24,6 +28,7 @@ export default function MyProfilePage() {
     );
   }
 
+  // ✅ ইউজার থাকলে তার ডিটেইলস দেখাবে
   if (session?.user) {
     const user = session.user;
 
@@ -46,7 +51,7 @@ export default function MyProfilePage() {
     return (
       <div className="max-w-md mx-auto my-12 p-6 bg-white rounded-2xl shadow-xl border border-slate-100">
         <div className="flex justify-between items-center border-b pb-4 mb-6">
-          <h2 className="text-xl font-bold text-neutral">My Profile</h2>
+          <h2 className="text-xl font-bold text-slate-800">My Profile</h2>
           <button onClick={handleLogOut} className="btn btn-xs btn-error text-white rounded-lg px-3 py-1">
             Log Out
           </button>
