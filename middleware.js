@@ -7,9 +7,7 @@ export async function middleware(request) {
 
   const { pathname } = request.nextUrl;
 
-  const isProtectedRoute = 
-    pathname.startsWith("/my-profile") || 
-    /^\/products\/[^\/]+$/.test(pathname);
+  const isProtectedRoute = /^\/products\/[^\/]+$/.test(pathname);
 
   if (isProtectedRoute && !sessionToken) {
     const loginUrl = new URL("/login", request.url);
@@ -19,6 +17,7 @@ export async function middleware(request) {
 
   return NextResponse.next();
 }
+
 export const config = {
-  matcher: ["/products/:id*", "/my-profile/:path*"],
+  matcher: ["/products/:id*"], 
 };

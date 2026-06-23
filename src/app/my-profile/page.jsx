@@ -1,5 +1,4 @@
 "use client";
-
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -13,7 +12,7 @@ export default function MyProfilePage() {
   useEffect(() => {
     if (!isPending && !session) {
       toast.error("Please login to view your profile!");
-      router.push("/login");
+      router.push("/login?callbackUrl=/my-profile");
     }
   }, [session, isPending, router]);
 
@@ -80,5 +79,6 @@ export default function MyProfilePage() {
       </div>
     );
   }
+
   return null;
 }
